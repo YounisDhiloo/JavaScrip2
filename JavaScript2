@@ -1,0 +1,88 @@
+1)
+function createAddFunction(addend) {
+    return function(number) {
+        return number + addend;
+    };
+}
+let addFive = createAddFunction(5);
+console.log(addFive(10));
+----------------------------------------------------------------------
+
+2)
+function searchArray(array, value) {
+    if (array.length === 0) {
+        return false;
+    } else if (array[0] === value) {
+        return true;
+    } else {
+        return searchArray(array.slice(1), value);
+    }
+}
+
+let myArray = [1, 2, 3, 4, 5];
+console.log(searchArray(myArray, 3));
+console.log(searchArray(myArray, 6));
+
+----------------------------------------------------------------------
+
+3)
+function addParagraph(text) {
+    let newParagraph = document.createElement('p');
+    newParagraph.textContent = text;
+    document.body.appendChild(newParagraph);
+}
+
+addParagraph('This is a new paragraph.');
+
+----------------------------------------------------------------------
+
+4)
+function addListItem(text) {
+  let ul = document.querySelector('ul');
+  let li = document.createElement('li');
+  li.textContent = text;
+  ul.appendChild(li);
+}
+
+----------------------------------------------------------------------
+
+5)
+function changeBackgroundColor(element, color) {
+  // Set the background color of the element
+  element.style.backgroundColor = color;
+}
+
+----------------------------------------------------------------------
+
+6)
+function saveToLocalStorage(key, obj) {
+  let json = JSON.stringify(obj);
+
+  localStorage.setItem(key, json);
+}
+
+----------------------------------------------------------------------
+
+
+7)
+function getFromLocalStorage(key) {
+  let json = localStorage.getItem(key);
+  let obj = JSON.parse(json);
+
+  return obj;
+
+----------------------------------------------------------------------
+
+8)
+function saveAndRetrieveObject(obj) {
+  for (let key in obj) {
+    let value = obj[key];
+    localStorage.setItem(key, value);
+  }
+  let newObj = {};
+  for (let key in obj) {
+    let value = localStorage.getItem(key);
+    newObj[key] = value;
+  }
+  return newObj;
+}
